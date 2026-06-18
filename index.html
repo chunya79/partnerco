@@ -916,10 +916,6 @@
     function closeSearch() {
       document.getElementById('searchOverlay').classList.remove('open');
     }
-    function doSearch() {
-      const q = document.getElementById('searchInput').value.trim();
-      if (q) window.open('https://partner.co/en-nz/shop?search=' + encodeURIComponent(q), '_blank');
-    }
     document.getElementById('searchOverlay').addEventListener('click', function(e) {
       if (e.target === this) closeSearch();
     });
@@ -999,6 +995,21 @@
 
     window.addEventListener('resize', updateInsta);
     window.addEventListener('load', () => { updateInsta(); startInstaAuto(); });
+
+    // ── AFFILIATE CUSTID ──
+    document.querySelectorAll('a[href*="partner.co/en-nz"]').forEach(a => {
+      try {
+        const url = new URL(a.href);
+        url.searchParams.set('custid', 'N6155488');
+        a.href = url.toString();
+      } catch(e) {}
+    });
+
+    // Also apply to search
+    function doSearch() {
+      const q = document.getElementById('searchInput').value.trim();
+      if (q) window.open('https://partner.co/en-nz/shop?custid=N6155488&search=' + encodeURIComponent(q), '_blank');
+    }
   </script>
 
 </body>
