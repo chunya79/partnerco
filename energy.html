@@ -44,8 +44,9 @@
 
     /* HEADER */
     header { position: sticky; top: 0; z-index: 100; background: var(--white); border-bottom: 1px solid rgba(34,31,31,0.08); }
-    .header-inner { display: flex; align-items: center; justify-content: space-between; max-width: 1400px; margin: 0 auto; padding: 0 48px; height: 72px; }
+    .header-inner { position: relative; display: flex; align-items: center; justify-content: space-between; max-width: 1400px; margin: 0 auto; padding: 0 48px; height: 72px; }
     .logo img { height: 30px; width: auto; }
+    nav { position: absolute; left: 50%; transform: translateX(-50%); }
     nav ul { display: flex; gap: 40px; list-style: none; }
     nav a { font-size: 13px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; }
     nav a:hover { opacity: 0.6; }
