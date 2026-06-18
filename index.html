@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Your Wellness Partner</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&family=Cormorant+Garamond:ital,wght@1,400;1,500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -322,55 +322,67 @@
     .product-tagline { font-size: 13px; color: rgba(34,31,31,0.6); margin-bottom: 20px; flex: 1; }
     .product-price { font-size: 15px; font-weight: 700; margin-bottom: 14px; }
     .product-price .subscribe { font-size: 12px; font-weight: 400; color: var(--green); display: block; }
+    .shop-product-btn {
+      display: inline-block;
+      margin-top: 4px;
+      padding: 11px 24px;
+      border: 1.5px solid var(--dark);
+      background: transparent;
+      color: var(--dark);
+      font-family: var(--font);
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s, color 0.2s;
+    }
+    .shop-product-btn:hover { background: var(--dark); color: var(--white); }
 
     /* ── FARM TO FARMACEUTICAL ── */
     .farm {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      min-height: 845px;
-    }
-    .farm-img { overflow: hidden; }
-    .farm-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
-    .farm-text {
       background: #29524D;
-      padding: 80px 80px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
+      padding: 110px 48px;
+      text-align: center;
       color: var(--white);
     }
-    .farm-text .section-label { color: rgba(255,255,255,0.6); }
+    .farm .section-label { color: rgba(255,255,255,0.6); margin-bottom: 20px; }
     .farm-title {
-      font-size: clamp(34px, 2.8vw, 48px);
+      font-size: clamp(36px, 4vw, 60px);
       font-weight: 300;
       line-height: 1.1;
       letter-spacing: -0.02em;
-      margin-bottom: 20px;
+      margin-bottom: 24px;
       color: var(--white);
     }
+    .farm-title .serif { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 500; }
     .farm-body {
-      font-size: 16px;
+      font-size: 17px;
       line-height: 1.75;
       color: rgba(255,255,255,0.72);
-      margin-bottom: 36px;
-      max-width: 440px;
+      max-width: 600px;
+      margin: 0 auto 60px;
     }
-    .farm-pillars { width: 100%; margin-bottom: 40px; }
+    .farm-pillars {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 48px 60px;
+      max-width: 800px;
+      margin: 0 auto 56px;
+    }
     .pillar {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 16px;
-      padding: 14px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.2);
+      gap: 14px;
+      width: 120px;
     }
-    .pillar:first-child { border-top: 1px solid rgba(255,255,255,0.2); }
-    .pillar-icon { width: 32px; height: 32px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
+    .pillar-icon { width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; }
     .pillar-icon img { width: 100%; height: 100%; object-fit: contain; filter: brightness(0) invert(1); }
-    .pillar span { font-size: 14px; font-weight: 400; letter-spacing: 0.01em; color: var(--white); }
-    .farm-actions { display: flex; gap: 16px; }
+    .pillar span { font-size: 13px; font-weight: 400; letter-spacing: 0.02em; color: rgba(255,255,255,0.85); text-align: center; line-height: 1.4; }
+    .farm-actions { display: flex; gap: 16px; justify-content: center; }
     .farm-actions .btn { border-color: rgba(255,255,255,0.6); color: var(--white); }
-    .farm-actions .btn:hover { background: var(--white); color: #29524D; }
+    .farm-actions .btn:hover { background: var(--white); color: #29524D; border-color: var(--white); }
     .farm-actions .btn-dark { background: var(--white); color: #29524D; border-color: var(--white); }
     .farm-actions .btn-dark:hover { background: transparent; color: var(--white); }
 
@@ -428,44 +440,69 @@
     /* ── BETTER TOGETHER ── */
     .better-together {
       background: var(--cream);
-      padding: 100px 48px 80px;
+      padding: 100px 0 80px;
       text-align: center;
+      overflow: hidden;
     }
     .better-together h2 {
-      font-size: clamp(34px, 4vw, 56px);
+      font-size: clamp(28px, 3.5vw, 52px);
       font-weight: 300;
-      letter-spacing: -0.02em;
-      line-height: 1.1;
-      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+      margin-bottom: 10px;
+      padding: 0 48px;
     }
-    .better-together h2 strong {
-      font-weight: 700;
-      display: block;
+    .better-together h2 .serif {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-weight: 500;
+      font-size: 1.1em;
     }
     .better-together .sub {
-      font-size: 16px;
-      color: rgba(34,31,31,0.65);
-      margin-bottom: 48px;
+      font-size: 15px;
+      color: rgba(34,31,31,0.6);
+      margin-bottom: 56px;
+      padding: 0 48px;
     }
     .better-together .sub a { color: var(--green); font-weight: 600; }
-    .insta-grid {
-      display: grid;
-      grid-template-columns: repeat(8, 1fr);
-      gap: 6px;
-      max-width: 1400px;
-      margin: 0 auto 40px;
+
+    /* Spotlight carousel */
+    .insta-carousel { position: relative; padding: 10px 0 20px; margin-bottom: 48px; }
+    .insta-track-wrap { overflow: hidden; }
+    .insta-track {
+      display: flex;
+      align-items: center;
+      transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      will-change: transform;
     }
-    .insta-cell { aspect-ratio: 1; overflow: hidden; background: var(--sage); }
-    .insta-cell a { display: block; width: 100%; height: 100%; }
-    .insta-cell img {
+    .insta-slide {
+      flex: 0 0 22vw;
+      max-width: 320px;
+      min-width: 160px;
+      aspect-ratio: 0.82;
+      overflow: hidden;
+      margin: 0 6px;
+      transition: transform 0.55s, opacity 0.55s;
+      transform: scale(0.8);
+      opacity: 0.55;
+      cursor: pointer;
+    }
+    .insta-slide.active {
+      transform: scale(1);
+      opacity: 1;
+    }
+    .insta-slide.adj {
+      transform: scale(0.88);
+      opacity: 0.75;
+    }
+    .insta-slide img {
       width: 100%; height: 100%;
       object-fit: cover;
-      transition: transform 0.4s;
+      display: block;
     }
-    .insta-cell:hover img { transform: scale(1.08); }
     .follow-btn {
       display: inline-block;
-      padding: 14px 44px;
+      padding: 14px 48px;
       border: 1.5px solid var(--dark);
       background: transparent;
       color: var(--dark);
@@ -481,22 +518,22 @@
     .follow-btn:hover { background: var(--dark); color: var(--white); }
 
     /* ── FOOTER ── */
-    footer { background: var(--dark); color: var(--white); padding: 70px 48px 30px; }
-    .footer-inner { max-width: 1400px; margin: 0 auto; }
+    footer { background: var(--dark); color: var(--white); padding: 60px 48px 32px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
     .footer-top {
       display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      grid-template-columns: 1.6fr 1fr 1fr;
       gap: 60px;
-      padding-bottom: 60px;
+      padding-bottom: 48px;
       border-bottom: 1px solid rgba(255,255,255,0.1);
     }
-    .footer-brand .logo-footer { display: block; margin-bottom: 20px; }
-    .footer-brand .logo-footer img { height: 28px; filter: brightness(0) invert(1); opacity: 0.9; }
-    .footer-brand p { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,0.5); margin-bottom: 28px; max-width: 280px; }
-    .social-links { display: flex; gap: 14px; }
+    .footer-brand .logo-footer { display: block; margin-bottom: 18px; }
+    .footer-brand .logo-footer img { height: 26px; filter: brightness(0) invert(1); opacity: 0.85; }
+    .footer-brand p { font-size: 13px; line-height: 1.7; color: rgba(255,255,255,0.45); margin-bottom: 24px; max-width: 260px; }
+    .social-links { display: flex; gap: 12px; }
     .social-link {
-      width: 38px; height: 38px;
-      border: 1px solid rgba(255,255,255,0.2);
+      width: 36px; height: 36px;
+      border: 1px solid rgba(255,255,255,0.18);
       display: flex; align-items: center; justify-content: center;
       transition: border-color 0.2s, background 0.2s; color: var(--white);
     }
@@ -504,33 +541,31 @@
     .footer-col h4 {
       font-size: 11px; font-weight: 700;
       letter-spacing: 0.18em; text-transform: uppercase;
-      color: rgba(255,255,255,0.38); margin-bottom: 20px;
+      color: rgba(255,255,255,0.35); margin-bottom: 18px;
     }
-    .footer-col ul { display: flex; flex-direction: column; gap: 12px; }
-    .footer-col a { font-size: 14px; color: rgba(255,255,255,0.72); transition: color 0.2s; }
+    .footer-col ul { display: flex; flex-direction: column; gap: 10px; }
+    .footer-col a { font-size: 13px; color: rgba(255,255,255,0.65); transition: color 0.2s; }
     .footer-col a:hover { color: var(--white); }
     .footer-bottom {
-      padding-top: 28px;
+      padding-top: 24px;
       display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 16px;
+      flex-wrap: wrap; gap: 12px;
     }
-    .footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.38); }
-    .footer-legal { display: flex; gap: 24px; }
-    .footer-legal a { font-size: 12px; color: rgba(255,255,255,0.38); transition: color 0.2s; }
+    .footer-bottom p { font-size: 11px; color: rgba(255,255,255,0.32); }
+    .footer-legal { display: flex; gap: 20px; }
+    .footer-legal a { font-size: 11px; color: rgba(255,255,255,0.32); transition: color 0.2s; }
     .footer-legal a:hover { color: var(--white); }
     .footer-disclaimer {
-      padding-top: 20px; margin-top: 10px;
+      padding-top: 16px; margin-top: 8px;
       border-top: 1px solid rgba(255,255,255,0.06);
-      font-size: 11px; color: rgba(255,255,255,0.28); line-height: 1.6;
+      font-size: 10px; color: rgba(255,255,255,0.22); line-height: 1.6;
     }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 1200px) {
       .cat-card { flex: 0 0 calc(25% - 12px); }
       .products-grid { grid-template-columns: repeat(2, 1fr); }
-      .farm { grid-template-columns: 1fr; min-height: auto; }
-      .farm-img { height: 400px; }
-      .farm-text { padding: 60px 48px; }
+      .farm { padding: 80px 32px; }
       .journal-grid { grid-template-columns: repeat(3, 1fr); }
       .insta-grid { grid-template-columns: repeat(4, 1fr); }
       .footer-top { grid-template-columns: 1fr 1fr; gap: 40px; }
@@ -570,7 +605,6 @@
         <ul>
           <li><a href="https://partner.co/en-nz/shop" target="_blank">Shop</a></li>
           <li><a href="https://partner.co/en-nz/our-story" target="_blank">About</a></li>
-          <li><a href="https://blog.partner.co/" target="_blank">Journal</a></li>
         </ul>
       </nav>
       <div class="header-icons">
@@ -645,9 +679,9 @@
   <!-- DOCTOR'S ORDERS -->
   <div class="doctors">
     <div class="doctors-inner">
-      <div class="section-label">Physician Picked</div>
-      <h2 class="section-title"><strong>Doctor's Orders</strong></h2>
-      <p class="section-body">Pick up your new favourite wellness habit from our top physician-picked products.</p>
+      <div class="section-label">Most Loved</div>
+      <h2 class="section-title"><strong>Best Sellers</strong></h2>
+      <p class="section-body">Our most-loved products, here to support your body naturally from the inside out.</p>
       <div class="products-grid">
 
         <div class="product-card">
@@ -660,6 +694,7 @@
             <div class="product-name">Tahitian Noni™ ORIGINAL</div>
             <div class="product-tagline">The original noni juice from the groves of Tahiti. Supports overall wellness and vitality.</div>
             <div class="product-price">$49.95 <span class="subscribe">Subscribe &amp; Save 15%</span></div>
+            <a class="shop-product-btn" href="https://partner.co/en-nz/shop/product/tahitian-noni-original" target="_blank">Shop Now</a>
           </div>
         </div>
 
@@ -673,6 +708,7 @@
             <div class="product-name">Restoriix™</div>
             <div class="product-tagline">Advanced detox and mineral replenishment to help cleanse and restore your body from within.</div>
             <div class="product-price">$59.95 <span class="subscribe">Subscribe &amp; Save 15%</span></div>
+            <a class="shop-product-btn" href="https://partner.co/en-nz/shop/product/nutrifii-restoriix" target="_blank">Shop Now</a>
           </div>
         </div>
 
@@ -685,6 +721,7 @@
             <div class="product-name">Probiotiix™</div>
             <div class="product-tagline">A potent probiotic blend to support digestive health, immune function and gut balance.</div>
             <div class="product-price">$44.95 <span class="subscribe">Subscribe &amp; Save 15%</span></div>
+            <a class="shop-product-btn" href="https://partner.co/en-nz/shop/product/nutrifii-probiotiix" target="_blank">Shop Now</a>
           </div>
         </div>
 
@@ -698,6 +735,7 @@
             <div class="product-name">Vináli®</div>
             <div class="product-tagline">A powerhouse antioxidant formula combining grape seed extract and vitamin C for cellular protection.</div>
             <div class="product-price">$39.95 <span class="subscribe">Subscribe &amp; Save 15%</span></div>
+            <a class="shop-product-btn" href="https://partner.co/en-nz/shop/product/nutrifii-vinali" target="_blank">Shop Now</a>
           </div>
         </div>
 
@@ -707,39 +745,34 @@
 
   <!-- FARM TO FARMACEUTICAL -->
   <div class="farm">
-    <div class="farm-img">
-      <img src="https://cdn.buttercms.com/vJ69Vt8yQM2t2wwO9apz" alt="Farm sourcing" />
+    <div class="section-label">Our Process</div>
+    <h2 class="farm-title">From <span class="serif">Farm</span> to <span class="serif">Farm</span>aceutical</h2>
+    <p class="farm-body">From noni groves to farm-grown peas in our protein, our scientists hand-pick the best of nature and combine it with science to reimagine your nutrition essentials.</p>
+    <div class="farm-pillars">
+      <div class="pillar">
+        <div class="pillar-icon"><img src="https://cdn.buttercms.com/ugLgEEpqT2uFTdIO2ajt" alt="" /></div>
+        <span>Precision Solutions</span>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon"><img src="https://cdn.buttercms.com/CWBNTq6QCejeQ3UMmBQK" alt="" /></div>
+        <span>Sourced From Nature</span>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon"><img src="https://cdn.buttercms.com/b3P5dCGeSGyDLdT8Q9gA" alt="" /></div>
+        <span>Scientifically Tested</span>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon"><img src="https://cdn.buttercms.com/v36GuLvgQpC0HRKLyzer" alt="" /></div>
+        <span>Traceable Ingredients</span>
+      </div>
+      <div class="pillar">
+        <div class="pillar-icon"><img src="https://cdn.buttercms.com/2eoRbW4lRKOflxVmm6OX" alt="" /></div>
+        <span>Third-Party Validated</span>
+      </div>
     </div>
-    <div class="farm-text">
-      <div class="section-label">Our Process</div>
-      <h2 class="farm-title">From Farm to Farmaceutical</h2>
-      <p class="farm-body">From noni groves to farm-grown peas in our protein, our scientists hand-pick the best of nature and combine it with science to reimagine your nutrition essentials.</p>
-      <div class="farm-pillars">
-        <div class="pillar">
-          <div class="pillar-icon"><img src="https://cdn.buttercms.com/ugLgEEpqT2uFTdIO2ajt" alt="" /></div>
-          <span>Precision Solutions</span>
-        </div>
-        <div class="pillar">
-          <div class="pillar-icon"><img src="https://cdn.buttercms.com/CWBNTq6QCejeQ3UMmBQK" alt="" /></div>
-          <span>Sourced From Nature</span>
-        </div>
-        <div class="pillar">
-          <div class="pillar-icon"><img src="https://cdn.buttercms.com/b3P5dCGeSGyDLdT8Q9gA" alt="" /></div>
-          <span>Scientifically Tested</span>
-        </div>
-        <div class="pillar">
-          <div class="pillar-icon"><img src="https://cdn.buttercms.com/v36GuLvgQpC0HRKLyzer" alt="" /></div>
-          <span>Traceable Ingredients</span>
-        </div>
-        <div class="pillar">
-          <div class="pillar-icon"><img src="https://cdn.buttercms.com/2eoRbW4lRKOflxVmm6OX" alt="" /></div>
-          <span>Third-Party Validated</span>
-        </div>
-      </div>
-      <div class="farm-actions">
-        <a href="https://partner.co/en-nz/our-approach" class="btn" target="_blank">Our Approach</a>
-        <a href="https://blog.partner.co/category/wellness/clinical-studies/" class="btn btn-dark" target="_blank">The Clinical Studies</a>
-      </div>
+    <div class="farm-actions">
+      <a href="https://partner.co/en-nz/our-approach" class="btn" target="_blank">Our Approach</a>
+      <a href="https://blog.partner.co/category/wellness/clinical-studies/" class="btn btn-dark" target="_blank">The Clinical Studies</a>
     </div>
   </div>
 
@@ -779,17 +812,21 @@
 
   <!-- BETTER TOGETHER -->
   <section class="better-together">
-    <h2>Because we're<strong>#BetterTogether</strong></h2>
+    <h2>Because we're <span class="serif">#BetterTogether</span></h2>
     <p class="sub">Join the <a href="https://www.instagram.com/partnercoglobal/" target="_blank">@partnercoglobal</a> healthy social life</p>
-    <div class="insta-grid">
-      <div class="insta-cell"><a href="https://www.instagram.com/partnercoglobal/" target="_blank"><img src="https://cdn.buttercms.com/xikqI9GQgCSh19xwaWFw" alt="" /></a></div>
-      <div class="insta-cell"><a href="https://www.instagram.com/partnercoglobal/" target="_blank"><img src="https://cdn.buttercms.com/1uKjcl3pTzWHMdEpfz9D" alt="" /></a></div>
-      <div class="insta-cell"><a href="https://www.instagram.com/partnercoglobal/" target="_blank"><img src="https://cdn.buttercms.com/vtkaXQmaQRyEmACdzuWS" alt="" /></a></div>
-      <div class="insta-cell"><a href="https://www.instagram.com/partnercoglobal/" target="_blank"><img src="https://cdn.buttercms.com/K16EbJnTCunSpQmRlaAi" alt="" /></a></div>
-      <div class="insta-cell"><a href="https://www.instagram.com/partnercoglobal/" target="_blank"><img src="https://cdn.buttercms.com/K7pPOpJQQ0mu4a4o0W8A" alt="" /></a></div>
-      <div class="insta-cell"><a href="https://www.instagram.com/partnercoglobal/" target="_blank"><img src="https://cdn.buttercms.com/rm5plQIQh6zaemqevfEw" alt="" /></a></div>
-      <div class="insta-cell"><a href="https://www.instagram.com/partnercoglobal/" target="_blank"><img src="https://cdn.buttercms.com/2WFS9whUSPWSZwBr0qFw" alt="" /></a></div>
-      <div class="insta-cell"><a href="https://www.instagram.com/partnercoglobal/" target="_blank"><img src="https://cdn.buttercms.com/F1it9tJTs8jgb6lf78RA" alt="" /></a></div>
+    <div class="insta-carousel">
+      <div class="insta-track-wrap">
+        <div class="insta-track" id="instaTrack">
+          <div class="insta-slide"><a href="https://www.instagram.com/partnercoglobal/" target="_blank"><img src="https://cdn.buttercms.com/xikqI9GQgCSh19xwaWFw" alt="" /></a></div>
+          <div class="insta-slide"><a href="https://www.instagram.com/partnercoglobal/" target="_blank"><img src="https://cdn.buttercms.com/1uKjcl3pTzWHMdEpfz9D" alt="" /></a></div>
+          <div class="insta-slide"><a href="https://www.instagram.com/partnercoglobal/" target="_blank"><img src="https://cdn.buttercms.com/vtkaXQmaQRyEmACdzuWS" alt="" /></a></div>
+          <div class="insta-slide"><a href="https://www.instagram.com/partnercoglobal/" target="_blank"><img src="https://cdn.buttercms.com/K16EbJnTCunSpQmRlaAi" alt="" /></a></div>
+          <div class="insta-slide"><a href="https://www.instagram.com/partnercoglobal/" target="_blank"><img src="https://cdn.buttercms.com/K7pPOpJQQ0mu4a4o0W8A" alt="" /></a></div>
+          <div class="insta-slide"><a href="https://www.instagram.com/partnercoglobal/" target="_blank"><img src="https://cdn.buttercms.com/rm5plQIQh6zaemqevfEw" alt="" /></a></div>
+          <div class="insta-slide"><a href="https://www.instagram.com/partnercoglobal/" target="_blank"><img src="https://cdn.buttercms.com/2WFS9whUSPWSZwBr0qFw" alt="" /></a></div>
+          <div class="insta-slide"><a href="https://www.instagram.com/partnercoglobal/" target="_blank"><img src="https://cdn.buttercms.com/F1it9tJTs8jgb6lf78RA" alt="" /></a></div>
+        </div>
+      </div>
     </div>
     <a href="https://www.instagram.com/partnercoglobal/" class="follow-btn" target="_blank">Follow Us</a>
   </section>
@@ -800,7 +837,7 @@
       <div class="footer-top">
         <div class="footer-brand">
           <a href="/" class="logo-footer"><img src="https://cdn.buttercms.com/91gYFUySV23JioE0cftw" alt="Partner.Co" /></a>
-          <p>Your wellness partner for health, lifestyle and financial freedom. Science-backed nutrition from farm to Farmaceutical.</p>
+          <p>Supporting your body naturally from the inside out. Science-backed nutrition from farm to Farmaceutical.</p>
           <div class="social-links">
             <a href="https://www.facebook.com/PartnerCoCorporate" class="social-link" target="_blank" aria-label="Facebook">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
@@ -814,31 +851,20 @@
           </div>
         </div>
         <div class="footer-col">
-          <h4>Company</h4>
+          <h4>Explore</h4>
           <ul>
             <li><a href="/">Home</a></li>
             <li><a href="https://partner.co/en-nz/shop" target="_blank">Shop</a></li>
-            <li><a href="https://blog.partner.co/" target="_blank">Journal</a></li>
-            <li><a href="https://partner.co/en-nz/global-offices" target="_blank">Global Offices</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>About</h4>
-          <ul>
             <li><a href="https://partner.co/en-nz/our-story" target="_blank">Our Story</a></li>
             <li><a href="https://partner.co/en-nz/our-approach" target="_blank">Our Approach</a></li>
-            <li><a href="https://partner.co/en-nz/community" target="_blank">Community</a></li>
-            <li><a href="https://partner.co/en-nz/the-experts" target="_blank">The Experts</a></li>
-            <li><a href="https://partner.co/en-nz/leadership" target="_blank">Leadership</a></li>
             <li><a href="https://blog.partner.co/category/wellness/clinical-studies/" target="_blank">Clinical Studies</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Connect</h4>
           <ul>
-            <li><a href="https://partner.co/en-nz/contact-us" target="_blank">Contact Us</a></li>
-            <li><a href="tel:08004430642">0800 443 064</a></li>
-            <li><a href="mailto:ausupport@partner.co">ausupport@partner.co</a></li>
+            <li><a href="mailto:renee@embracehealth.co.nz">renee@embracehealth.co.nz</a></li>
+            <li><a href="https://www.instagram.com/partnercoglobal/" target="_blank">@partnercoglobal</a></li>
             <li><a href="https://office.partner.co" target="_blank">Manage Account</a></li>
             <li><a href="https://library.partner.co" target="_blank">Resources Library</a></li>
           </ul>
@@ -910,6 +936,47 @@
     }
 
     startAutoSlide();
+
+    // ── INSTAGRAM SPOTLIGHT CAROUSEL ──
+    let instaIdx = 2;
+    let instaAutoTimer;
+
+    function updateInsta() {
+      const track = document.getElementById('instaTrack');
+      if (!track) return;
+      const slides = [...track.querySelectorAll('.insta-slide')];
+      const slideW = slides[0].offsetWidth + 12;
+      const viewW = track.parentElement.offsetWidth;
+
+      slides.forEach((s, i) => {
+        s.classList.remove('active', 'adj');
+        const dist = Math.abs(i - instaIdx);
+        if (dist === 0) s.classList.add('active');
+        else if (dist === 1) s.classList.add('adj');
+      });
+
+      const offset = viewW / 2 - (instaIdx * slideW + slideW / 2);
+      track.style.transform = `translateX(${offset}px)`;
+    }
+
+    function instaNext() {
+      const total = document.getElementById('instaTrack').querySelectorAll('.insta-slide').length;
+      instaIdx = (instaIdx + 1) % total;
+      updateInsta();
+    }
+
+    function startInstaAuto() {
+      instaAutoTimer = setInterval(instaNext, 3500);
+    }
+
+    document.querySelectorAll('.insta-slide').forEach((s, i) => {
+      s.addEventListener('click', function(e) {
+        if (i !== instaIdx) { e.preventDefault(); instaIdx = i; updateInsta(); clearInterval(instaAutoTimer); startInstaAuto(); }
+      });
+    });
+
+    window.addEventListener('resize', updateInsta);
+    window.addEventListener('load', () => { updateInsta(); startInstaAuto(); });
   </script>
 
 </body>
