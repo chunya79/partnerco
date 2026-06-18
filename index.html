@@ -136,9 +136,15 @@
     }
     /* TO ADD VIDEO: replace <div class="hero-bg"> with:
        <video class="hero-bg" autoplay muted loop playsinline src="YOUR_VIDEO_URL.mp4" style="object-fit:cover;width:100%;height:100%;position:absolute;inset:0;"></video> */
-    .hero-bg {
-      position: absolute; inset: 0;
-      background: linear-gradient(160deg, #0e2220 0%, #1d3d39 40%, #29524D 70%, #1a1a1a 100%);
+    .hero-video {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      min-width: 177.78vh;
+      min-height: 56.25vw;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
     }
     .hero-overlay {
       position: absolute; inset: 0;
@@ -206,7 +212,7 @@
       transition: transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94);
     }
     .cat-card {
-      flex: 0 0 calc(12.5% - 14px);
+      flex: 0 0 calc(25% - 12px);
       min-width: 0;
       display: block;
       text-align: center;
@@ -316,20 +322,6 @@
     .product-tagline { font-size: 13px; color: rgba(34,31,31,0.6); margin-bottom: 20px; flex: 1; }
     .product-price { font-size: 15px; font-weight: 700; margin-bottom: 14px; }
     .product-price .subscribe { font-size: 12px; font-weight: 400; color: var(--green); display: block; }
-    .add-to-bag {
-      width: 100%;
-      padding: 14px;
-      background: var(--dark);
-      color: var(--white);
-      border: none;
-      font-family: var(--font);
-      font-size: 12px; font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: background 0.2s;
-    }
-    .add-to-bag:hover { background: var(--green); }
 
     /* ── FARM TO FARMACEUTICAL ── */
     .farm {
@@ -337,32 +329,30 @@
       grid-template-columns: 1fr 1fr;
       min-height: 845px;
     }
-    .farm-images {
-      display: grid;
-      grid-template-rows: 1fr 1fr;
-    }
     .farm-img { overflow: hidden; }
     .farm-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
     .farm-text {
-      background: var(--beige);
+      background: #29524D;
       padding: 80px 80px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: flex-start;
+      color: var(--white);
     }
+    .farm-text .section-label { color: rgba(255,255,255,0.6); }
     .farm-title {
       font-size: clamp(34px, 2.8vw, 48px);
       font-weight: 300;
       line-height: 1.1;
       letter-spacing: -0.02em;
       margin-bottom: 20px;
+      color: var(--white);
     }
-    .farm-title strong { font-weight: 700; }
     .farm-body {
       font-size: 16px;
       line-height: 1.75;
-      color: rgba(34,31,31,0.72);
+      color: rgba(255,255,255,0.72);
       margin-bottom: 36px;
       max-width: 440px;
     }
@@ -372,13 +362,17 @@
       align-items: center;
       gap: 16px;
       padding: 14px 0;
-      border-bottom: 1px solid rgba(34,31,31,0.12);
+      border-bottom: 1px solid rgba(255,255,255,0.2);
     }
-    .pillar:first-child { border-top: 1px solid rgba(34,31,31,0.12); }
+    .pillar:first-child { border-top: 1px solid rgba(255,255,255,0.2); }
     .pillar-icon { width: 32px; height: 32px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; }
-    .pillar-icon img { width: 100%; height: 100%; object-fit: contain; }
-    .pillar span { font-size: 14px; font-weight: 500; letter-spacing: 0.01em; }
+    .pillar-icon img { width: 100%; height: 100%; object-fit: contain; filter: brightness(0) invert(1); }
+    .pillar span { font-size: 14px; font-weight: 400; letter-spacing: 0.01em; color: var(--white); }
     .farm-actions { display: flex; gap: 16px; }
+    .farm-actions .btn { border-color: rgba(255,255,255,0.6); color: var(--white); }
+    .farm-actions .btn:hover { background: var(--white); color: #29524D; }
+    .farm-actions .btn-dark { background: var(--white); color: #29524D; border-color: var(--white); }
+    .farm-actions .btn-dark:hover { background: transparent; color: var(--white); }
 
     /* ── JOURNAL ── */
     .journal {
@@ -535,7 +529,7 @@
       .cat-card { flex: 0 0 calc(25% - 12px); }
       .products-grid { grid-template-columns: repeat(2, 1fr); }
       .farm { grid-template-columns: 1fr; min-height: auto; }
-      .farm-images { grid-template-rows: auto; grid-template-columns: 1fr 1fr; height: 400px; }
+      .farm-img { height: 400px; }
       .farm-text { padding: 60px 48px; }
       .journal-grid { grid-template-columns: repeat(3, 1fr); }
       .insta-grid { grid-template-columns: repeat(4, 1fr); }
@@ -587,9 +581,9 @@
     </div>
   </header>
 
-  <!-- HERO — replace hero-bg div with a <video> tag once you have the video URL -->
+  <!-- HERO -->
   <section class="hero">
-    <div class="hero-bg"></div>
+    <iframe class="hero-video" src="https://player.vimeo.com/video/999628998?background=1&autoplay=1&loop=1&muted=1&byline=0&title=0&playsinline=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture"></iframe>
     <div class="hero-overlay"></div>
     <div class="hero-content">
       <h1>Your<br><em>Wellness</em><br>Partner</h1>
@@ -666,7 +660,6 @@
             <div class="product-name">Tahitian Noni™ ORIGINAL</div>
             <div class="product-tagline">The original noni juice from the groves of Tahiti. Supports overall wellness and vitality.</div>
             <div class="product-price">$49.95 <span class="subscribe">Subscribe &amp; Save 15%</span></div>
-            <button class="add-to-bag" onclick="window.open('https://partner.co/en-nz/shop/product/tahitian-noni-original','_blank')">Add To Bag</button>
           </div>
         </div>
 
@@ -680,7 +673,6 @@
             <div class="product-name">Restoriix™</div>
             <div class="product-tagline">Advanced detox and mineral replenishment to help cleanse and restore your body from within.</div>
             <div class="product-price">$59.95 <span class="subscribe">Subscribe &amp; Save 15%</span></div>
-            <button class="add-to-bag" onclick="window.open('https://partner.co/en-nz/shop/product/nutrifii-restoriix','_blank')">Add To Bag</button>
           </div>
         </div>
 
@@ -693,7 +685,6 @@
             <div class="product-name">Probiotiix™</div>
             <div class="product-tagline">A potent probiotic blend to support digestive health, immune function and gut balance.</div>
             <div class="product-price">$44.95 <span class="subscribe">Subscribe &amp; Save 15%</span></div>
-            <button class="add-to-bag" onclick="window.open('https://partner.co/en-nz/shop/product/nutrifii-probiotiix','_blank')">Add To Bag</button>
           </div>
         </div>
 
@@ -707,7 +698,6 @@
             <div class="product-name">Vináli®</div>
             <div class="product-tagline">A powerhouse antioxidant formula combining grape seed extract and vitamin C for cellular protection.</div>
             <div class="product-price">$39.95 <span class="subscribe">Subscribe &amp; Save 15%</span></div>
-            <button class="add-to-bag" onclick="window.open('https://partner.co/en-nz/shop/product/nutrifii-vinali','_blank')">Add To Bag</button>
           </div>
         </div>
 
@@ -717,17 +707,12 @@
 
   <!-- FARM TO FARMACEUTICAL -->
   <div class="farm">
-    <div class="farm-images">
-      <div class="farm-img">
-        <img src="https://cdn.buttercms.com/vJ69Vt8yQM2t2wwO9apz" alt="Farm sourcing" />
-      </div>
-      <div class="farm-img">
-        <img src="https://cdn.buttercms.com/uV0NpGukRDC9NmeuggAn" alt="Natural ingredients" />
-      </div>
+    <div class="farm-img">
+      <img src="https://cdn.buttercms.com/vJ69Vt8yQM2t2wwO9apz" alt="Farm sourcing" />
     </div>
     <div class="farm-text">
       <div class="section-label">Our Process</div>
-      <h2 class="farm-title">From <strong>Farm</strong> to <strong>Farm</strong>aceutical</h2>
+      <h2 class="farm-title">From Farm to Farmaceutical</h2>
       <p class="farm-body">From noni groves to farm-grown peas in our protein, our scientists hand-pick the best of nature and combine it with science to reimagine your nutrition essentials.</p>
       <div class="farm-pillars">
         <div class="pillar">
@@ -896,17 +881,35 @@
 
     // ── CAROUSEL ──
     let pos = 0;
-    const SHOW = 8;
-    function slide(dir) {
+    const SHOW = 4;
+    let autoSlideTimer;
+
+    function getCardW() {
       const track = document.getElementById('catTrack');
-      const cards = [...track.querySelectorAll('.cat-card')];
-      const total = cards.length;
-      const gap = 16;
-      const cardW = cards[0].getBoundingClientRect().width + gap;
-      const maxPos = total - SHOW;
-      pos = Math.max(0, Math.min(pos + dir, maxPos));
-      track.style.transform = `translateX(-${pos * cardW}px)`;
+      const card = track.querySelector('.cat-card');
+      return card ? card.getBoundingClientRect().width + 16 : 0;
     }
+
+    function slideTo(newPos) {
+      const track = document.getElementById('catTrack');
+      const total = track.querySelectorAll('.cat-card').length;
+      const maxPos = total - SHOW;
+      pos = ((newPos % total) + total) % total;
+      if (pos > maxPos) pos = 0;
+      track.style.transform = `translateX(-${pos * getCardW()}px)`;
+    }
+
+    function slide(dir) {
+      clearInterval(autoSlideTimer);
+      slideTo(pos + dir);
+      startAutoSlide();
+    }
+
+    function startAutoSlide() {
+      autoSlideTimer = setInterval(() => slideTo(pos + 1), 3000);
+    }
+
+    startAutoSlide();
   </script>
 
 </body>
